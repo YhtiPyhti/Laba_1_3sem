@@ -240,4 +240,5 @@ int main()
     cryptoSR();
     cryptoEG();
     cryptoRSA();
+
 }
