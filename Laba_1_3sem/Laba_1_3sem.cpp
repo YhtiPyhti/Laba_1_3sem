@@ -45,7 +45,7 @@ void cryptoDH() {
     DH dh{ 23,5 };
     int a, b;
 
-    cout << "Diffie-Hellman\n\n";
+    cout << "\nDiffie-Hellman\n\n";
     cout << "Xa = " << dh.GetXa() << endl;
     cout << "Xb = " << dh.GetXb() << endl;
 
@@ -120,9 +120,6 @@ void cryptoSR() {
     sr.Setda(19);
     sr.Setdb(9);
 
-    for (int i = 0; i < 15; i++) {
-        cout << (char)176 << (char)176 << (char)176 << (char)176;
-    }
     cout << "\nShamir\n\n";
     cout << "text = " << text << ", p = " << sr.p << ", Ca = " << sr.GetCa() << ", Cb = " << sr.GetCb() << ", da = " << sr.Getda() << ", db = " << sr.Getdb() << endl << endl;
 
@@ -186,9 +183,6 @@ void cryptoEG() {
     eg.m = ost(eg.r, eg.p - 1 - eg.GetCb(), eg.p);
     eg.m = eg.m * eg.e % eg.p;
 
-    for (int i = 0; i < 15; i++) {
-        cout << (char)176 << (char)176 << (char)176 << (char)176;
-    }
     cout << "\nElGamal\n\n";
     cout << "text = " << text << ", p = " << eg.p << ", g = " << eg.g << ", k = " << eg.k << ", Ca = " << eg.GetCa() << ", Cb = " << eg.GetCb() << ", da = " << eg.Da << ", db = " << eg.Db << endl << endl;
     cout << "Encrypto " << eg.e << ", " << eg.r << endl;
@@ -223,10 +217,6 @@ void cryptoRSA() {
     rsa.e = ost(text, rsa.d, rsa.N);
     rsa.m = ost(rsa.e, rsa.GetC(), rsa.N);
 
-    for (int i = 0; i < 15; i++) {
-        cout << (char)176 << (char)176 << (char)176 << (char)176;
-    }
-
     cout << "\nRSA\n\n";
     cout << "text = " << text << ", p = " << rsa.p << ", q = " << rsa.q << ", N = " << rsa.N << ", phi = " << rsa.phi << ", d = " << rsa.d << ", c = " << rsa.GetC() << endl << endl;
     cout << "Encrypto " << rsa.e << endl;
@@ -236,9 +226,29 @@ void cryptoRSA() {
 
 int main()
 {
-    cryptoDH();
-    cryptoSR();
-    cryptoEG();
-    cryptoRSA();
+    int ch = 0;
+    cout << "Hello!\n";
+    while (true) {
+        cout << "Input number:\n";
+        cout << "1) Shamil\n";
+        cout << "2) Diffie-Hellman\n";
+        cout << "3) ElGamal\n";
+        cout << "4) RSA\n";
+        cout << "5) Exit\n";
+        cin >> ch;
+        for (int i = 0; i < 15; i++) {
+            cout << (char)176 << (char)176 << (char)176 << (char)176;
+        }
+        if (ch == 1) cryptoSR();
+        else if (ch == 2) cryptoDH();
+        else if (ch == 3) cryptoEG();
+        else if (ch == 4) cryptoRSA();
+        else if (ch == 5) exit(0);
+        else cout << "Input 1 or 2 or 3 or 4!";
+        for (int i = 0; i < 15; i++) {
+            cout << (char)176 << (char)176 << (char)176 << (char)176;
+        }
+        cout << endl;
+    }
 
 }
